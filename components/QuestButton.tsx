@@ -33,11 +33,11 @@ function questsStatus() {
             acc.enrollable++;
         }
         return acc;
-    }, { enrollable: 1, enrolled: 1, claimable: 1, claimed: 0, expired: 0 });
+    }, { enrollable: 0, enrolled: 0, claimable: 0, claimed: 0, expired: 0 });
 }
 
 export function QuestsCount() {
-    const [status, setStatus] = useState({ enrollable: 1, enrolled: 1, claimable: 1, claimed: 0, expired: 0 });
+    const [status, setStatus] = useState({ enrollable: 0, enrolled: 0, claimable: 0, claimed: 0, expired: 0 });
 
     const checkForNewQuests = () => {
         setStatus(questsStatus());
