@@ -37,7 +37,7 @@ export default definePlugin({
         {
             find: "#{intl::ACCOUNT_SPEAKING_WHILE_MUTED}",
             replacement: {
-                match: /className:\i\.buttons,.{0,50}children:\[/,
+                match: /className:\i\.buttons,.+?children:\[/,
                 replace: "$&$self.renderQuestButtonSettingsBar(),"
             }
         },
@@ -51,7 +51,7 @@ export default definePlugin({
         {
             find: "location:\"GlobalDiscoverySidebar\"",
             replacement: {
-                match: /(\(\i\){let{tab:(\i)}=.{0,1500}children:\i}\))(]}\))/,
+                match: /(\(\i\){let{tab:(\i)}=.+?children:\i}\))(]}\))/,
                 replace: "$1,$self.renderQuestButtonBadges($2)$3"
             }
         },
