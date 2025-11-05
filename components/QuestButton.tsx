@@ -37,7 +37,7 @@ function questsStatus() {
 }
 
 export function QuestsCount() {
-    const [status, setStatus] = useState({ enrollable: 0, enrolled: 0, claimable: 0, claimed: 0, expired: 0 });
+    const [status, setStatus] = useState(questsStatus());
 
     const checkForNewQuests = () => {
         setStatus(questsStatus());
@@ -93,7 +93,7 @@ export function QuestsCount() {
 }
 
 export function QuestButton({ type }: { type: "top-bar" | "settings-bar"; }) {
-    const [state, setState] = useState({ enrollable: 0, enrolled: 0, claimable: 0, claimed: 0, expired: 0 });
+    const [state, setState] = useState(questsStatus());
 
     const checkForNewQuests = () => {
         setState(questsStatus());
