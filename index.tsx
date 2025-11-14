@@ -12,8 +12,8 @@ import { QuestButton, QuestsCount } from "./components/QuestButton";
 import settings from "./settings";
 import { ChannelStore, GuildChannelStore, QuestsStore, RunningGameStore } from "./stores";
 
-const { enrollAndStartVideoQuestWithErrorHandling }: { enrollAndStartVideoQuestWithErrorHandling: (quest: QuestValue, action: QuestAction) => Promise<any>; } = findByPropsLazy("enrollAndStartVideoQuestWithErrorHandling");
-const QuestLocationMap: Record<string, any> = findByPropsLazy("QUEST_HOME_DESKTOP", "11");
+const { enrollAndStartVideoQuestWithErrorHandling } = findByPropsLazy("enrollAndStartVideoQuestWithErrorHandling") as { enrollAndStartVideoQuestWithErrorHandling: (quest: QuestValue, action: QuestAction) => Promise<any>; };
+const QuestLocationMap = findByPropsLazy("QUEST_HOME_DESKTOP", "11") as Record<string, any>;
 
 let availableQuests: QuestValue[] = [];
 let acceptableQuests: QuestValue[] = [];
@@ -150,9 +150,9 @@ function updateQuests() {
             completeQuest(quest);
         }
     }
-    // console.log("Available quests updated:", availableQuests);
-    // console.log("Acceptable quests updated:", acceptableQuests);
-    // console.log("Completable quests updated:", completableQuests);
+    /* console.log("Available quests updated:", availableQuests);
+    console.log("Acceptable quests updated:", acceptableQuests);
+    console.log("Completable quests updated:", completableQuests); */
 }
 
 function acceptQuest(quest: QuestValue) {
