@@ -5,14 +5,14 @@
  */
 
 import definePlugin from "@utils/types";
-import { findByPropsLazy } from "@webpack";
+import { findByCodeLazy, findByPropsLazy } from "@webpack";
 import { FluxDispatcher, RestAPI } from "@webpack/common";
 
 import { QuestButton, QuestsCount } from "./components/QuestButton";
 import settings from "./settings";
 import { ChannelStore, GuildChannelStore, QuestsStore, RunningGameStore } from "./stores";
 
-const { enrollAndStartVideoQuestWithErrorHandling } = findByPropsLazy("enrollAndStartVideoQuestWithErrorHandling") as { enrollAndStartVideoQuestWithErrorHandling: (quest: QuestValue, action: QuestAction) => Promise<any>; };
+const QuestApplyAction = findByCodeLazy("type:\"QUESTS_ENROLL_BEGIN\"") as (questId: string, action: QuestAction) => Promise<any>;
 const QuestLocationMap = findByPropsLazy("QUEST_HOME_DESKTOP", "11") as Record<string, any>;
 
 let availableQuests: QuestValue[] = [];
@@ -150,9 +150,9 @@ function updateQuests() {
             completeQuest(quest);
         }
     }
-    /* console.log("Available quests updated:", availableQuests);
+    console.log("Available quests updated:", availableQuests);
     console.log("Acceptable quests updated:", acceptableQuests);
-    console.log("Completable quests updated:", completableQuests); */
+    console.log("Completable quests updated:", completableQuests);
 }
 
 function acceptQuest(quest: QuestValue) {
@@ -160,12 +160,9 @@ function acceptQuest(quest: QuestValue) {
     const action: QuestAction = {
         questContent: QuestLocationMap.QUEST_HOME_DESKTOP,
         questContentCTA: "ACCEPT_QUEST",
-        questContentPosition: 0,
-        questContentRowIndex: 0,
         sourceQuestContent: 0,
-        sourceQuestContentCTA: "ACCEPT_QUEST"
     };
-    enrollAndStartVideoQuestWithErrorHandling(quest, action).then(() => {
+    QuestApplyAction(quest.id, action).then(() => {
         console.log("Accepted quest:", quest.config.messages.questName);
     }).catch(err => {
         console.error("Failed to accept quest:", quest.config.messages.questName, err);

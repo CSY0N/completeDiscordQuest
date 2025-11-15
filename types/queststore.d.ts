@@ -128,9 +128,9 @@ interface Application {
 
 interface QuestAction {
     questContent: number;
-    questContentCTA: "ACCEPT_QUEST";
-    questContentPosition: number;
-    questContentRowIndex: number;
+    questContentCTA: string;
+    questContentPosition?: number;
+    questContentRowIndex?: number;
     sourceQuestContent: number;
-    sourceQuestContentCTA: "ACCEPT_QUEST";
+    sourceQuestContentCTA?: string;
 }
