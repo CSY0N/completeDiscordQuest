@@ -150,9 +150,9 @@ function updateQuests() {
             completeQuest(quest);
         }
     }
-    console.log("Available quests updated:", availableQuests);
+    /* console.log("Available quests updated:", availableQuests);
     console.log("Acceptable quests updated:", acceptableQuests);
-    console.log("Completable quests updated:", completableQuests);
+    console.log("Completable quests updated:", completableQuests); */
 }
 
 function acceptQuest(quest: QuestValue) {
