@@ -198,7 +198,7 @@ function completeQuest(quest) {
         let secondsDone = quest.userStatus?.progress?.[taskName]?.value ?? 0;
 
         if (!isApp && taskName !== "WATCH_VIDEO" && taskName !== "WATCH_VIDEO_ON_MOBILE") {
-            console.log("This no longer works in browser for non-video quests. Use the discord desktop app to complete the", questName, "quest!");
+            console.log("This no longer works in browser for non-video quests (" + taskName + "). Use the discord desktop app to complete the", questName, "quest!");
             return;
         }
 
