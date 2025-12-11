@@ -88,6 +88,18 @@ export function QuestsCount() {
                     )}
                 </Tooltip>
             )}
+            {status.claimed > 0 && (
+                <Tooltip text={"Claimed"}>
+                    {({ onMouseEnter, onMouseLeave }) => (
+                        <CountBadge
+                            onMouseEnter={onMouseEnter}
+                            onMouseLeave={onMouseLeave}
+                            count={status.claimed}
+                            color={"var(--blurple-50)"}
+                        />
+                    )}
+                </Tooltip>
+            )}
         </Flex>
     );
 }
