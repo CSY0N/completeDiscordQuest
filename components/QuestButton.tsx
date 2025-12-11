@@ -3,6 +3,8 @@
  * Copyright (c) 2025 Vendicated and contributors
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
+import "./QuestButton.css";
+
 import { findByCodeLazy, findByPropsLazy, findComponentByCodeLazy } from "@webpack";
 import { Tooltip, useEffect, useState } from "@webpack/common";
 
@@ -153,8 +155,6 @@ export function QuestButton({ type }: { type: "top-bar" | "settings-bar"; }) {
                     iconSize={20}
                     onClick={navigateToQuestHome}
                     onContextMenu={undefined}
-                    tooltip={tooltip}
-                    tooltipPosition={"bottom"}
                     hideOnClick={false}
                 /></SettingsBarButton>
         );
