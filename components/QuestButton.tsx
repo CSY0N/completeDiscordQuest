@@ -9,8 +9,8 @@ import "./QuestButton.css";
 import { findByCodeLazy, findByPropsLazy, findComponentByCodeLazy } from "@webpack";
 import { Tooltip, useEffect, useState } from "@webpack/common";
 
-import { QuestsStore } from "../stores";
 import { Flex } from "@components/Flex";
+import { QuestsStore } from "../stores";
 
 const QuestIcon = findByCodeLazy("\"M7.5 21.7a8.95");
 const { navigateToQuestHome } = findByPropsLazy("navigateToQuestHome");
@@ -21,8 +21,7 @@ const CountBadge = findComponentByCodeLazy("\"renderBadgeCount\"");
 function questsStatus() {
     const availableQuests = [...QuestsStore.quests.values()];
     return availableQuests.reduce((acc, x) => {
-        if (x.id === "1248385850622869556") return acc;
-        else if (new Date(x.config.expiresAt).getTime() < Date.now()) {
+        if (new Date(x.config.expiresAt).getTime() < Date.now()) {
             acc.expired++;
         } else if (x.userStatus?.claimedAt) {
             acc.claimed++;
