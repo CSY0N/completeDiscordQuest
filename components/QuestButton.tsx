@@ -3,9 +3,6 @@
  * Copyright (c) 2025 Vendicated and contributors
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
-
-import "./QuestButton.css";
-
 import { findByCodeLazy, findByPropsLazy, findComponentByCodeLazy } from "@webpack";
 import { Tooltip, useEffect, useState } from "@webpack/common";
 
@@ -51,7 +48,7 @@ export function QuestsCount() {
     }, []);
 
     return (
-        <Flex flexDirection={"row"} justifyContent={"flex-end"} className={"quest-button-badges"}>
+        <Flex flexDirection={"row"} justifyContent={"flex-end"} className={"quest-button-badges"} gap={"5px"}>
             {status.enrollable > 0 && (
                 <Tooltip text={"Enrollable"}>
                     {({ onMouseEnter, onMouseLeave }) => (
